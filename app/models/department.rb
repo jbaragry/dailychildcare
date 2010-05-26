@@ -12,4 +12,11 @@
 #
 
 class Department < ActiveRecord::Base
+  attr_accessible :name, :img_uri, :description
+
+  ImgURLRegex = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?(gif|png|jpg)$/ix
+
+  validates_presence_of :name
+  validates_format_of   :img_uri, :with => ImgURLRegex
+  validates_uniqueness_of :name
 end
