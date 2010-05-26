@@ -41,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # my defs
   map.resources :departments
+  map.resources :users
+
 
 
 
