@@ -44,8 +44,8 @@ describe SessionsController do
         @user = Factory(:user)
         @attr = { :email => @user.email, :password => @user.password }
         User.should_receive(:authenticate).
-             with(@user.email, @user.password).
-             and_return(@user)
+          with(@user.email, @user.password).
+          and_return(@user)
       end
 
       it "should sign the user in" do
@@ -59,6 +59,18 @@ describe SessionsController do
         redirect_to user_path(@user)
       end
     end
+
+    describe "DELETE 'destroy'" do
+
+      it "should sign a user out" do
+        test_sign_in(Factory(:user))
+        controller.should be_signed_in
+        delete :destroy
+        controller.should_not be_signed_in
+        response.should redirect_to(root_path)
+      end
+    end
+
 
 
   end

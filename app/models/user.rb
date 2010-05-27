@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100527102437
+# Schema version: 20100527143840
 #
 # Table name: users
 #
@@ -10,6 +10,7 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  remember_token     :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -33,9 +34,6 @@ class User < ActiveRecord::Base
   # Return true if the user's password matches the submitted password.
   before_save :encrypt_password
 
-  def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
-  end
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

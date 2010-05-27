@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100527102437
+# Schema version: 20100527143840
 #
 # Table name: users
 #
@@ -10,6 +10,7 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  remember_token     :string(255)
 #
 
 require 'spec_helper'
@@ -94,7 +95,7 @@ describe User do
     end
   end
 
-   describe "password encryption" do
+  describe "password encryption" do
 
     before(:each) do
       @user = User.create!(@attr)
@@ -123,23 +124,23 @@ describe User do
 
   describe "authenticate method" do
 
-      it "should return nil on email/password mismatch" do
-        wrong_password_user = User.authenticate(@attr[:email], "wrongpass")
-        wrong_password_user.should be_nil
-      end
-
-      it "should return nil for an email address with no user" do
-        nonexistent_user = User.authenticate("bar@foo.com", @attr[:password])
-        nonexistent_user.should be_nil
-      end
-
-      it "should return the user on email/password match" do
-        matching_user = User.authenticate(@attr[:email], @attr[:password])
-        matching_user.should == @user
-      end
+    it "should return nil on email/password mismatch" do
+      wrong_password_user = User.authenticate(@attr[:email], "wrongpass")
+      wrong_password_user.should be_nil
     end
 
-describe "remember me" do
+    it "should return nil for an email address with no user" do
+      nonexistent_user = User.authenticate("bar@foo.com", @attr[:password])
+      nonexistent_user.should be_nil
+    end
+
+    it "should return the user on email/password match" do
+      matching_user = User.authenticate(@attr[:email], @attr[:password])
+      matching_user.should == @user
+    end
+  end
+
+  describe "remember me" do
 
     before(:each) do
       @user = User.create!(@attr)
@@ -158,6 +159,7 @@ describe "remember me" do
       @user.remember_token.should_not be_nil
     end
   end
+
 
 
 

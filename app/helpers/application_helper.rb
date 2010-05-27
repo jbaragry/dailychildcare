@@ -9,4 +9,9 @@ module ApplicationHelper
       "#{base_title} | #{h(@title)}"
     end
   end
+
+  def logo
+    image_tag("barn-vann.jpg", :alt => "ChildCare", :class => "round")
+  end
+
 end
