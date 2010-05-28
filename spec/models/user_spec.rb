@@ -161,8 +161,8 @@ describe User do
     end
   end
 
-  #employees are admin users for now
-describe "admin attribute" do
+  #admin and general staff are separate users
+  describe "admin attribute" do
 
     before(:each) do
       @user = User.create!(@attr)
@@ -181,6 +181,27 @@ describe "admin attribute" do
       @user.should be_admin
     end
   end
+
+  describe "staff attribute" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "should respond to staff" do
+      @user.should respond_to(:staff)
+    end
+
+    it "should not be an admin by default" do
+      @user.should_not be_staff
+    end
+
+    it "should be convertible to an staff" do
+      @user.toggle!(:staff)
+      @user.should be_staff
+    end
+  end
+
 
 
 
