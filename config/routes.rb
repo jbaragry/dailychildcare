@@ -42,11 +42,10 @@ ActionController::Routing::Routes.draw do |map|
   # my defs
   map.resources :users
   map.resources :sessions, :only => [:new, :create, :destroy]
+  map.resources :departments
+
   map.signin  '/signin',  :controller => 'sessions', :action => 'new'
   map.signout '/signout', :controller => 'sessions', :action => 'destroy'
-
-  map.resources :departments
-  map.resources :sessions, :only => [:new, :create, :destroy]
   
   map.contact '/contact', :controller => 'pages', :action => 'contact'
   map.about   '/about',   :controller => 'pages', :action => 'about'
