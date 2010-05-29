@@ -26,5 +26,14 @@ describe Child do
     Child.create!(@attr)
   end
 
+  it "should require a name" do
+    no_name_child = Child.new(@attr.merge(:name => ""))
+    no_name_child.should_not be_valid
+  end
+
+    it "should require a dept" do
+    no_name_child = Child.new(@attr.merge(:department_id => ""))
+    no_name_child.should_not be_valid
+  end
 
 end

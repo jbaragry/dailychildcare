@@ -28,6 +28,9 @@ namespace :db do
       :password => "staffpw",
       :password_confirmation => "staffpw")
     user.toggle!(:staff)
+
+    child = Child.create!(:name => "Child",
+      :department_id => 1)
     user = User.create!(:name => "Parent",
       :email => "parent@home.no",
       :password => "parentpw",

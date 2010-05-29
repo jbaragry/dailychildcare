@@ -13,4 +13,7 @@
 
 class Child < ActiveRecord::Base
     attr_accessible :name, :department_id, :user_id
+
+    validates_presence_of :name, :department_id
+
 end
