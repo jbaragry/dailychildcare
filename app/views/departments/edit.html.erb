@@ -1,4 +1,4 @@
-<h2>Add Department</h2>
+<h2>Edit Department</h2>
 
 <% form_for(@department) do |f| %>
   <%= f.error_messages %>
@@ -10,8 +10,10 @@
     <%= f.label :img_uri %><br />
     <%= f.text_field :img_uri %>
   </div>
-
+ 
   <div class="actions">
-    <%= f.submit "Add Child" %>
+    <%= f.submit "Update" %>
   </div>
 <% end %>
+
+

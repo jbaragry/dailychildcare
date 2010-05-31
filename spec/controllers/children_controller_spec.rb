@@ -75,10 +75,10 @@ describe ChildrenController do
       response.should have_tag("h2", /#{@child.name}/)
     end
 
-    #    it "should have a profile image" do
-    #      get :show, :id => @child
-    #      response.should have_tag("h2>img", :class => "image")
-    #    end
+    it "should have a profile image" do
+      get :show, :id => @child
+      response.should have_tag("img", :class => "image")
+    end
 
     #    it "should include the child's department" do
     #      get :show, :id => @child
@@ -122,27 +122,27 @@ describe ChildrenController do
         response.should render_template('new')
       end
     end
-  end
+ 
 
-  describe "success" do
+    describe "success" do
     
-    before(:each) do
-      @attr = { :name => "New Child", :department_id => "1" }
-      @child = Factory(:child, @attr)
-      Child.stub!(:new).and_return(@child)
-      @child.should_receive(:save).and_return(true)
+      before(:each) do
+        @attr = { :name => "New Child", :department_id => "1" }
+        @child = Factory(:child, @attr)
+        Child.stub!(:new).and_return(@child)
+        @child.should_receive(:save).and_return(true)
+      end
+    
+      it "should redirect to the chid show page" do
+        post :create, :child => @attr
+        response.should redirect_to(child_path(@child))
+      end
+    
+      it "should have a welcome message" do
+        post :create, :child => @attr
+        flash[:success].should =~ /New child added/i
+      end
     end
-    
-    it "should redirect to the chid show page" do
-      post :create, :child => @attr
-      response.should redirect_to(child_path(@child))
-    end
-    
-    it "should have a welcome message" do
-      post :create, :child => @attr
-      flash[:success].should =~ /New child added/i
-    end
-    
   end
 
   describe "GET 'edit'" do

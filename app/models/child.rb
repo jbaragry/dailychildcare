@@ -12,7 +12,12 @@
 #
 
 class Child < ActiveRecord::Base
-    attr_accessible :name, :department_id, :user_id
+  attr_accessible :name, :department_id, :user_id
 
-    validates_presence_of :name, :department_id
+  validates_presence_of :name, :department_id
+
+  # fake email has to use with gravatar
+  def gravatar_url()
+    "http://www.gravatar.com/avatar" + Digest::MD5.hexdigest(:name) + "?d=monsterid"
+  end
 end
