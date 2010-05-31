@@ -1,3 +1,13 @@
-
-
-<%= @child.name %>, <%= @child.department_id %>
+<table class="profile">
+  <tr>
+    <td class="main">
+      <h2>
+        <%= h @child.name %>
+      </h2>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= h @child.name %><br />
+      <strong>Department</strong> <%= h @child.department_id %>
+    </td>
+  </tr>
+</table>

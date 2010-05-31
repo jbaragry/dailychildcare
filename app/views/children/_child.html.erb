@@ -1,0 +1,7 @@
+<li>
+  <%= link_to h(child.name), child %> - Dept: <%= child.department_id %>
+  <% if current_user.admin? %> 
+  | <%= link_to "delete", child, :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
+
+</li>

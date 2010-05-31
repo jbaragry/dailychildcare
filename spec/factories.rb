@@ -9,3 +9,14 @@ end
 Factory.sequence :email do |n|
   "parent#{n}@home.no"
 end
+
+Factory.define :department do |dept|
+  dept.name                  "The Department"
+  dept.img_uri               "http:/some.where/img.jpg"
+end
+
+# By using the symbol ':child', we get Factory Girl to simulate the Child model.
+Factory.define :child do |child|
+  child.name                  "The Child"
+  child.department_id         "1"
+end

@@ -1,11 +1,12 @@
 class DepartmentsController < ApplicationController
-
   
   def show
+    @title = @dept.name
     @dept = Department.find(params[:id])
+
   end
 
-   def index
+  def index
     @title = "All Departments"
     @departments = Department.all
   end

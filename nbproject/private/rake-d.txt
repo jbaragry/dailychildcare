@@ -14,6 +14,7 @@ db\:migrate\:down=Runs the "down" for a given migration VERSION.
 db\:migrate\:redo=Rollbacks the database one migration and re migrate up. If you want to rollback more than one step, define STEP=x. Target specific version with VERSION=x.
 db\:migrate\:reset=Resets your database using your migrations for the current environment
 db\:migrate\:up=Runs the "up" for a given migration VERSION.
+db\:populate=Fill database with sample data
 db\:reset=Drops and recreates the database from db/schema.rb for the current environment and loads the seeds.
 db\:rollback=Rolls the schema back to the previous version. Specify the number of steps with STEP=n
 db\:schema\:dump=Create a db/schema.rb file that can be portably used against any DB supported by AR
