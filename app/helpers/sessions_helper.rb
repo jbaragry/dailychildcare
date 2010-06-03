@@ -15,6 +15,9 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
 
+  def current_user?(user)
+    user == current_user
+  end
   def user_from_remember_token
     remember_token = cookies[:remember_token]
     User.find_by_remember_token(remember_token) unless remember_token.nil?
@@ -29,9 +32,10 @@ module SessionsHelper
     self.current_user = nil
   end
 
-  def current_user?(user)
-    user == current_user
+  def authenticate
+    deny_access unless signed_in?
   end
+
   
   def deny_access
     store_location

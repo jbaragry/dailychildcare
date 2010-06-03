@@ -31,9 +31,37 @@ describe Child do
     no_name_child.should_not be_valid
   end
 
-    it "should require a dept" do
+  it "should require a dept" do
     no_name_child = Child.new(@attr.merge(:department_id => ""))
     no_name_child.should_not be_valid
   end
+
+  describe "micropost associations" do
+
+    before(:each) do
+      @child = Child.create(@attr)
+      @mp1 = Factory(:micropost, :child => @child, :created_at => 1.day.ago)
+      @mp2 = Factory(:micropost, :child => @child, :created_at => 1.hour.ago)
+    end
+
+    it "should have a microposts attribute" do
+      @child.should respond_to(:microposts)
+    end
+
+    it "should have the right microposts in the right order" do
+      @child.microposts.should == [@mp2, @mp1]
+    end
+
+    it "should destroy associated microposts" do
+      @child.destroy
+      [@mp1, @mp2].each do |micropost|
+        Micropost.find_by_id(micropost.id).should be_nil
+      end
+    end
+
+  end
+
+ 
+
 
 end

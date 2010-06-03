@@ -1,0 +1,18 @@
+<div class="user_info">
+  <a href="<%= user_path(current_user) %>">
+    <%= image_tag("http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(@child.name) + "?d=monsterid",
+      :alt => "name",
+      :class => "image") %>
+    <span class="user_name">
+      <%= h @child.name %>
+      <br/>
+      Dept: <%= h @child.department_id %>
+      <br/>
+    </span>
+
+    <span class="microposts">
+      <%= pluralize(@child.microposts.count, "micropost") %>
+    </span>
+  </a>
+</div>
+

@@ -1,8 +1,19 @@
-<h1>Daily Childcare</h1>
-<p>
-  This is the home page for the
-  Daily Childcare
-  sample application.
-</p>
+<% if signed_in? %>
+  <table class="front">
+  <tr>
+  <%= render @departments %>
+  </tr>
+</table>
+<% else %>
+  <h1>Daily Childcare</h1>
 
-<%= link_to "Departments", '#', :class => "departments_button round" %>
+  <p>
+    This is the home page for the
+    Daily Childcare
+    application.
+  </p>
+
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+ or
+  <%= link_to "Sign in now!", signin_path, :class => "signup_button round" %>
+<% end %>

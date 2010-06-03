@@ -4,12 +4,18 @@
       <h2>
         <%= h @child.name %>
       </h2>
+      <h3 class="micropost">Update:</h3>
+      <%= render 'pages/micropost_form' %>
+
+      <% unless @child.microposts.empty? %>
+        <table class="microposts">
+          <%= render @microposts %>
+        </table>
+        <%= will_paginate @microposts %>
+      <% end %>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= h @child.name %><br />
-      <strong>Department</strong> <%= h @child.department_id %>
-      <%= image_tag("http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(@child.name) + "?d=monsterid", :alt => "name", :class => "image") %>
-
+      <%= render 'child_info' %>
     </td>
   </tr>
 </table>

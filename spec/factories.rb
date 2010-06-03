@@ -10,6 +10,13 @@ Factory.sequence :email do |n|
   "parent#{n}@home.no"
 end
 
+Factory.define :staff do |user|
+  user.name                  "The Staff"
+  user.email                 "staff@home.no"
+  user.password              "foobar"
+  user.password_confirmation "foobar"
+end
+
 Factory.define :department do |department|
   department.name                  "The Department"
   department.img_uri               "http://some.where/img.jpg"
@@ -19,4 +26,9 @@ end
 Factory.define :child do |child|
   child.name                  "The Child"
   child.department_id         "1"
+end
+
+Factory.define :micropost do |micropost|
+  micropost.content "Foo bar"
+  micropost.association :child
 end

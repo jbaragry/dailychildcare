@@ -5,7 +5,9 @@ class ChildrenController < ApplicationController
 
   def show
     @child = Child.find(params[:id])
-    @title = @child.name
+    @microposts = @child.microposts.paginate(:page => params[:page])
+    @micropost = Micropost.new(:child_id => @child.id)
+    @title = CGI.escapeHTML(@child.name)
   end
 
   def new

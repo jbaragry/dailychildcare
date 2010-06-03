@@ -46,6 +46,7 @@ namespace :db do
       :password_confirmation => "parentpw")
 
     # fill with dummy parents and children
+    puts "Creating Sample Kids"
     99.times do |n|
       name  = Faker::Name.name
       email = "parent#{n+1}@home.no"
@@ -59,6 +60,15 @@ namespace :db do
       Child.create!(:name => name,
         :department_id => department)
     end
+
+    #fill with sample updates
+    puts "Creating sample updates for kids"
+    Child.all(:limit => 6).each do |child|
+      50.times do
+        child.microposts.create!(:content => Faker::Lorem.sentence(5))
+      end
+    end
+
   end
 end
 

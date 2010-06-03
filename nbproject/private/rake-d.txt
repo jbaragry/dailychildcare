@@ -45,6 +45,7 @@ doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
 doc\:plugins\:annotate_model=Generate documentation for the annotate_model plugin
 doc\:plugins\:annotate_models=Generate documentation for the annotate_models plugin
+doc\:plugins\:gravatar=Generate documentation for the gravatar plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files
 doc\:rerails=Force a rebuild of the RDOC files

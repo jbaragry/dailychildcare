@@ -203,7 +203,7 @@ describe DepartmentsController do
 
       it "should destroy the dept" do
         delete :destroy, :id => @department
-        response.should redirect_to(department_path)
+        response.should redirect_to(departments_path)
       end
     end
   end

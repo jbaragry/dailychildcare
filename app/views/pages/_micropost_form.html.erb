@@ -1,0 +1,10 @@
+<% form_for @micropost do |f| %>
+  <%= f.error_messages %>
+  <div class="field">
+    <%= f.text_area :content %>
+    <%= f.hidden_field :child_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

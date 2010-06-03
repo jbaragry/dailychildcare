@@ -2,9 +2,11 @@ class PagesController < ApplicationController
 
   
 
-  def home
+def home
     @title = "Home"
+    @departments = Department.all
   end
+
 
   def contact
     @title = "Contact"

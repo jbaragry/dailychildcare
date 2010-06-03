@@ -14,6 +14,8 @@
 class Child < ActiveRecord::Base
   attr_accessible :name, :department_id, :user_id
 
+  has_many :microposts, :dependent => :destroy
+
   validates_presence_of :name, :department_id
 
   # fake email has to use with gravatar

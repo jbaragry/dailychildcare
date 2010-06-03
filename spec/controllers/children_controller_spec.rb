@@ -85,8 +85,14 @@ describe ChildrenController do
     #      response.should have_tag("h2", /#{@child.department_id}/)
     #    end
 
+    it "should show the child's microposts" do
+      mp1 = Factory(:micropost, :child => @child, :content => "Foo bar")
+      mp2 = Factory(:micropost, :child => @child, :content => "Baz quux")
+      get :show, :id => @child
+      response.should have_tag("span.content", mp1.content)
+      response.should have_tag("span.content", mp2.content)
+    end
   end
-
 
   describe "GET 'new'" do
 
@@ -243,6 +249,7 @@ describe ChildrenController do
         response.should redirect_to(children_path)
       end
     end
+
   end
 
  
