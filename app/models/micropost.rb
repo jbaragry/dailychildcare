@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20100531113434
+#
+# Table name: microposts
+#
+#  id         :integer         not null, primary key
+#  content    :string(255)
+#  child_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Micropost < ActiveRecord::Base
   attr_accessible :content, :child_id
 
