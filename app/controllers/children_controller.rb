@@ -8,6 +8,7 @@ class ChildrenController < ApplicationController
     @microposts = @child.microposts.paginate(:page => params[:page])
     @micropost = Micropost.new(:child_id => @child.id)
     @title = CGI.escapeHTML(@child.name)
+    @users = @child.followers
   end
 
   def new

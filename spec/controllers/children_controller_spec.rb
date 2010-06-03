@@ -56,6 +56,8 @@ describe ChildrenController do
 
     before(:each) do
       @child = Factory(:child)
+      @user = test_sign_in(Factory(:staff))
+
       # Arrange for User.find(params[:id]) to find the right user.
       Child.stub!(:find, @child.id).and_return(@child)
     end
@@ -80,10 +82,10 @@ describe ChildrenController do
       response.should have_tag("img", :class => "image")
     end
 
-    #    it "should include the child's department" do
-    #      get :show, :id => @child
-    #      response.should have_tag("h2", /#{@child.department_id}/)
-    #    end
+    it "should include the child's department" do
+      get :show, :id => @child
+      response.should have_tag("span.child_dept", /#{@child.department_id}/)
+    end
 
     it "should show the child's microposts" do
       mp1 = Factory(:micropost, :child => @child, :content => "Foo bar")
@@ -92,6 +94,16 @@ describe ChildrenController do
       response.should have_tag("span.content", mp1.content)
       response.should have_tag("span.content", mp2.content)
     end
+
+    it "should show user followers / parents" do
+      @parent = Factory(:user)
+      @parent.follow!(@child)
+
+      get :show, :id => @child
+      response.should have_tag("span.child_parents", /#{@parent.name}/)
+    end
+
+
   end
 
   describe "GET 'new'" do

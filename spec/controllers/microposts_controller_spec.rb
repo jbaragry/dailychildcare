@@ -36,7 +36,7 @@ describe MicropostsController do
 
       it "should render the child page" do
         post :create, :micropost => @attr
-        flash[:notice].should =~ /please include an update message/i
+        flash[:error].should =~ /please include an update message/i
         response.should redirect_to(child_path(@child))
       end
     end

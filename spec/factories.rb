@@ -10,11 +10,12 @@ Factory.sequence :email do |n|
   "parent#{n}@home.no"
 end
 
-Factory.define :staff do |user|
-  user.name                  "The Staff"
-  user.email                 "staff@home.no"
-  user.password              "foobar"
-  user.password_confirmation "foobar"
+Factory.define :staff, :class => User  do |staff|
+  staff.name                  "The Staff"
+  staff.email                 "staff@home.no"
+  staff.password              "foobar"
+  staff.password_confirmation "foobar"
+  staff.staff                 true
 end
 
 Factory.define :department do |department|

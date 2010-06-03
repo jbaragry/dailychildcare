@@ -61,7 +61,31 @@ describe Child do
 
   end
 
- 
+  describe "relationships" do
 
+    before(:each) do
+      @child = Child.create!(@attr)
+      @parent = Factory(:user)
+    end
+
+    it "should have a relationships method" do
+      @child.should respond_to(:relationships)
+    end
+
+ 
+    it "should have a reverse_relationships method" do
+      @child.should respond_to(:reverse_relationships)
+    end
+
+    it "should have a followers method" do
+      @child.should respond_to(:followers)
+    end
+
+    it "should include the follower in the followers array" do
+      @parent.follow!(@child)
+      @child.followers.include?(@parent).should be_true
+    end
+
+  end
 
 end

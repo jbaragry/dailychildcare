@@ -203,6 +203,54 @@ describe User do
     end
   end
 
+  describe "relationships" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+      @offspring = Factory(:child)
+    end
+
+    it "should have a relationships method" do
+      @user.should respond_to(:relationships)
+    end
+
+    it "should have a following method" do
+      @user.should respond_to(:following)
+    end
+
+    it "should have a following? method" do
+      @user.should respond_to(:following?)
+    end
+
+    it "should have a follow! method" do
+      @user.should respond_to(:follow!)
+    end
+
+
+    it "should have an unfollow! method" do
+      @user.should respond_to(:unfollow!)
+    end
+
+    it "should follow a child" do
+      @user.follow!(@offspring)
+      @user.should be_following(@offspring)
+    end
+
+    it "should include the followed child in the following array" do
+      @user.follow!(@offspring)
+      @user.following.include?(@offspring).should be_true
+    end
+
+
+
+    it "should unfollow a child" do
+      @user.follow!(@offspring)
+      @user.unfollow!(@offspring)
+      @user.should_not be_following(@offspring)
+    end
+
+
+  end
 
 
 

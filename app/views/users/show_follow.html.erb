@@ -1,10 +1,9 @@
-<table class="profile">
+<table>
   <tr>
     <td class="main">
-      <h2>
-        <%= h @user.name %>
-      </h2>
-           <% unless @offspring.empty? %>
+      <h2><%= @title %></h2>
+
+      <% unless @offspring.empty? %>
         <ul class="users">
           <%= render @offspring %>
         </ul>
@@ -12,7 +11,11 @@
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= h @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+
+      <%= render 'pages/stats' %>
+
+
     </td>
   </tr>
 </table>

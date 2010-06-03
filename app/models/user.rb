@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
+  has_many :relationships, :foreign_key => "parent_id"
+  has_many :following, :through => :relationships, :source => :offspring
+
+
   EmailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates_presence_of :name, :email
@@ -52,7 +56,17 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
   end
 
+  def following?(followed)
+    relationships.find_by_offspring_id(followed)
+  end
 
+  def follow!(followed)
+    relationships.create!(:offspring_id => followed.id)
+  end
+
+  def unfollow!(followed)
+    relationships.find_by_offspring_id(followed).destroy
+  end
 
 
 

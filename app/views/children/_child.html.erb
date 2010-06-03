@@ -1,7 +1,10 @@
 <li>
+  <%= image_tag("http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(child.name) + "?d=monsterid",
+    :alt => "name",
+    :class => "image") %>
   <%= link_to h(child.name), child %> - Dept: <%= child.department_id %>
-  <% if current_user.admin? %> 
-  | <%= link_to "delete", child, :method => :delete, :confirm => "Are you sure?" %>
+  <% if current_user.admin? %>
+    | <%= link_to "delete", child, :method => :delete, :confirm => "Are you sure?" %>
   <% end %>
 
 </li>

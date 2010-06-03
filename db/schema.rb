@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100531113434) do
+ActiveRecord::Schema.define(:version => 20100603095347) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20100531113434) do
   end
 
   add_index "microposts", ["child_id"], :name => "index_microposts_on_child_id"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "offspring_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["offspring_id"], :name => "index_relationships_on_offspring_id"
+  add_index "relationships", ["parent_id"], :name => "index_relationships_on_parent_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

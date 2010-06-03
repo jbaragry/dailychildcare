@@ -7,11 +7,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.name
+    @offspring = @user.following
+#    render 'show_follow'
   end
 
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page])
+    
   end
 
 

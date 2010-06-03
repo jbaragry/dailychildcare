@@ -5,14 +5,18 @@
       :class => "image") %>
     <span class="user_name">
       <%= h @child.name %>
-      <br/>
-      Dept: <%= h @child.department_id %>
-      <br/>
-    </span>
-
-    <span class="microposts">
-      <%= pluralize(@child.microposts.count, "micropost") %>
     </span>
   </a>
+
+  <br/>
+
+  <span class="child_dept">
+    Dept: <%= h @child.department_id %>
+    <br/>
+  </span>
+
+  <span class="microposts">
+    <%= pluralize(@child.microposts.count, "micropost") %>
+  </span>
 </div>
 

@@ -284,6 +284,30 @@ describe UsersController do
     end
   end
 
+  describe "follow pages" do
+
+    describe "when signed in" do
+
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        @child = Factory(:child)
+        @user.follow!(@child)
+      end
+
+#      it "should show user following" do
+#        get :index, :id => @user
+#        response.should have_tag("a[href=?]", child_path(@child),
+#          @child.name)
+#      end
+
+#      it "should show user followers" do
+#        get :followers, :id => @other_user
+#        response.should have_tag("a[href=?]", user_path(@user), @user.name)
+#      end
+    end
+  end
+
+
 
 
 end
