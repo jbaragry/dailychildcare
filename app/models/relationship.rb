@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20100603095347
+#
+# Table name: relationships
+#
+#  id           :integer         not null, primary key
+#  parent_id    :integer
+#  offspring_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class Relationship < ActiveRecord::Base
   attr_accessible :offspring_id
 
