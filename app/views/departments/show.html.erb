@@ -2,3 +2,15 @@
   <%= h @department.name %>
   <%= image_tag(@department.img_uri, :alt => @department.name) %>
 </h2>
+
+<% unless @children.empty? %>
+
+<h2>Children</h2>
+<table class="dept_child">
+  <tr>
+    <%= render :partial => "dept_child", :collection => @children, :as => :child %>
+  </tr>
+
+</table>
+      <% end %>
+

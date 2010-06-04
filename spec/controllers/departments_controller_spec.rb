@@ -24,6 +24,9 @@ describe DepartmentsController do
       @department = Factory(:department)
       # Arrange for Dept.find(params[:id]) to find the right user.
       Department.stub!(:find, @department.id).and_return(@department)
+      @attr = { :name => "Child", :department_id => @department }
+      @child = Child.create!(@attr)
+
     end
 
     it "should be successful" do
@@ -46,10 +49,10 @@ describe DepartmentsController do
       response.should have_tag("img", :class => "image")
     end
 
-    it "should include a list of the departments children"
-    #      get :show, :id => @child
-    #      response.should have_tag("h2", /#{@child.department_id}/)
-    #    end
+    it "should include a list of the departments children" do
+      get :show, :id => @department
+      response.should have_tag("h2", /Children/)
+    end
 
   end
 

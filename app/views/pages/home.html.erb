@@ -1,35 +1,4 @@
-<% if signed_in? %>
-  <% if current_user.admin? %>
-    <table class="front">
-      <tr>
-        <td>
-          Admin Home
 
-        </td>
-      </tr>
-    </table>
-  <% else %>
-    <% if current_user.staff? %>
-      <table class="front">
-        <tr>
-          <td>
-            Staff Home
-          </td>
-        </tr>
-      </table>
-    <% else %> # must be parent
-      <table class="front">
-        <tr>
-          <td>
-            <%= render 'pages/user_info' %>
-            <%= render 'pages/stats' %>
-
-          </td>
-        </tr>
-      </table>
-    <% end %>
-  <% end %>
-<% else %>
   <h1>Daily Childcare</h1>
 
   <p>
@@ -41,4 +10,3 @@
   <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
   or
   <%= link_to "Sign in now!", signin_path, :class => "signup_button round" %>
-<% end %>

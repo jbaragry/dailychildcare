@@ -5,6 +5,7 @@ class DepartmentsController < ApplicationController
   def show
     @department = Department.find(params[:id])
     @title = @department.name
+    @children = Child.find_all_by_department_id(params[:id])
   end
 
   def index

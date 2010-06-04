@@ -58,7 +58,6 @@ describe ChildrenController do
       @child = Factory(:child)
       @user = test_sign_in(Factory(:staff))
 
-      # Arrange for User.find(params[:id]) to find the right user.
       Child.stub!(:find, @child.id).and_return(@child)
     end
 
