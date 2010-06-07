@@ -17,7 +17,6 @@ describe Child do
   before(:each) do
     @attr = {
       :name => "A Child",
-      :user_id => 1,
       :department_id => 1
     }
   end
@@ -87,5 +86,26 @@ describe Child do
     end
 
   end
+
+  describe "checkedin attribute" do
+
+    before(:each) do
+      @child = Child.create!(@attr)
+    end
+
+    it "should respond to checkedin" do
+      @child.should respond_to(:checkedin)
+    end
+
+    it "should not be an admin by default" do
+      @child.should_not be_checkedin
+    end
+
+    it "should be convertible to an admin" do
+      @child.toggle!(:checkedin)
+      @child.should be_checkedin
+    end
+  end
+
 
 end

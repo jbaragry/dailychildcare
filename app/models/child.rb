@@ -12,7 +12,7 @@
 #
 
 class Child < ActiveRecord::Base
-  attr_accessible :name, :department_id, :user_id
+  attr_accessible :name, :department_id, :user_id, :present
 
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :foreign_key => "offspring_id",
@@ -32,6 +32,5 @@ class Child < ActiveRecord::Base
   def gravatar_url()
     "http://www.gravatar.com/avatar" + Digest::MD5.hexdigest(:name) + "?d=monsterid"
   end
-
 
 end

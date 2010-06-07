@@ -56,6 +56,14 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
+  def checkin
+    @child = Child.find(params[:id])
+    @child.toggle!(:checkedin)
+    #render :text => "checked in"
+    render :partial => 'departments/dept_child', :locals => {:child => @child }
+
+  end
+
   private
 
   def authenticate

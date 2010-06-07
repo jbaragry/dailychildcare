@@ -3,14 +3,22 @@
   <%= image_tag(@department.img_uri, :alt => @department.name) %>
 </h2>
 
-<% unless @children.empty? %>
+<% unless @children.empty?
+%>
 
-<h2>Children</h2>
-<table class="dept_child">
+<h2><%= @children.count %> Children</h2>
+ 
+<table>
   <tr>
-    <%= render :partial => "dept_child", :collection => @children, :as => :child %>
+  <% @children.each_with_index do |c, i| %>
+  <td>  <div id="<%= dom_id(c) %>">
+    <%= render :partial => "dept_child", :locals => {:child => c } %>
+  </div> </td>
+  <%= ((i + 1) % 4 == 0)? "</tr><tr>" : "" %>
+     <% end %>
+
   </tr>
-
 </table>
-      <% end %>
 
+
+     <% end %>

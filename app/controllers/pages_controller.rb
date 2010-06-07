@@ -17,7 +17,6 @@ class PagesController < ApplicationController
         end
       end
       redirect_to :controller => 'users', :id => current_user.id, :action => 'show'
-
     end
   end
 

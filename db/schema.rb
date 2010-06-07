@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100603095347) do
+ActiveRecord::Schema.define(:version => 20100607133907) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "checkedin",     :default => false
   end
 
   add_index "children", ["department_id"], :name => "index_children_on_department_id"

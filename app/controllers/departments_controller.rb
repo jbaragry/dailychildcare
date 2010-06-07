@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  before_filter :authenticate, :only => [:destroy]
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :admin_user,   :only => :destroy
 
   def show
