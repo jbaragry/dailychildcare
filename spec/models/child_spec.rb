@@ -1,14 +1,14 @@
 # == Schema Information
-# Schema version: 20100603095347
+# Schema version: 20100607133907
 #
 # Table name: children
 #
 #  id            :integer         not null, primary key
 #  name          :string(255)
-#  user_id       :integer
 #  department_id :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  checkedin     :boolean
 #
 
 require 'spec_helper'
