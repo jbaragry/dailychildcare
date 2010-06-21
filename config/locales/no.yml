@@ -1,0 +1,61 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+"no":
+  hello: "Hei Verden"
+  home: "Hjem"
+  users: "Bruker"
+  departments: "Avdelinger"
+  settings: "Egenskaper"
+  profile: "Profile"
+  help: "Hjelp"
+  signin: "Logg På"
+  signout: "Logg Ut"
+  checkin: "sjekk inn"
+  checkout: "sjekk ut"
+  signup: "Registrer deg"
+  title: "Daglig Barnehage"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "et halvt minutt"
+      less_than_x_seconds:
+        one: "mindre enn 1 sekund"
+        other: "mindre enn %{count} sekunder"
+      x_seconds:
+        one: "1 sekund"
+        other: "%{count} sekunder"
+      less_than_x_minutes:
+        one: "mindre enn a minute"
+        other: "mindre enn %{count} minutes"
+      x_minutes:
+        one: "1 minutt"
+        other: "%{count} minutter"
+      about_x_hours:
+        one: "circa 1 time"
+        other: "circa %{count} timer"
+      x_days:
+        one: "1 dag"
+        other: "%{count} dager"
+      about_x_months:
+        one: "circa enn 1 måned"
+        other: "circa enn %{count} måneder"
+      x_months:
+        one: "1 måned"
+        other: "%{count} måneder"
+      about_x_years:
+        one: "mindre enn 1 år"
+        other: "about %{count} år"
+      over_x_years:
+        one: "mer enn 1 year"
+        other: "mer enn %{count} år"
+      almost_x_years:
+        one: "nesten 1 year"
+        other: "nesten %{count} år"
+    prompts:
+      year: "År"
+      month: "Måned"
+      day: "Dag"
+      hour: "Time"
+      minute: "Minutt"
+      second: "Sekund"

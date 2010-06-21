@@ -1,12 +1,12 @@
 
-  <h1>Daily Childcare</h1>
+  <h1><%=  t :title %></h1>
 
   <p>
     This is the home page for the
-    Daily Childcare
+    <%= t :title %>
     application.
   </p>
 
-  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  <%= link_to t(:signup), signup_path, :class => "signup_button round" %>
   or
-  <%= link_to "Sign in now!", signin_path, :class => "signup_button round" %>
+  <%= link_to t(:signin), signin_path, :class => "signup_button round" %>

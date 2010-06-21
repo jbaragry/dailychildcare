@@ -6,7 +6,7 @@
   <%= link_to h(child.name), child %>
   <br/>
 
-  <%= button_to_remote((!child.checkedin ? "signin" : "signout"),
+  <%= button_to_remote((!child.checkedin ? t(:checkin) : t(:checkout)),
     :update => "child_"+child.id.to_s, :script => true,
     :url=> {:controller=>'children',:action=>"checkin", :id => child.id}) %>
 

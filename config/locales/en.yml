@@ -3,3 +3,15 @@
 
 en:
   hello: "Hello world"
+  home: "Home"
+  users: "Users"
+  departments: "Departments"
+  settings: "Settings"
+  profile: "Profile"
+  help: "Help"
+  signin: "Sign In"
+  signout: "Sign Out"
+  checkin: "check in"
+  checkout: "check out"
+  signup: "Sign Up"
+  title: "Daily Childcare"

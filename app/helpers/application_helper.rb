@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # Return a title on a per-page basis.
   def title
-    base_title = "Daily Childcare"
+    base_title = t :title
     if @title.nil?
       base_title
     else
