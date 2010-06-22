@@ -60,7 +60,14 @@ class ChildrenController < ApplicationController
     @child = Child.find(params[:id])
     @child.toggle!(:checkedin)
     #render :text => "checked in"
-    render :partial => 'departments/dept_child', :locals => {:child => @child }
+    #render :partial => 'departments/dept_child', :locals => {:child => @child }
+
+    @children = Child.find_all_by_department_id(@child.department_id)
+    @checkedin = @children.select {|c| c.checkedin?}
+    render :update do |page|
+      page.replace "child_"+@child.id.to_s, :partial => "departments/dept_child", :locals => {:child => @child }
+#      page.replace "dept_children", :partial => "departments/dept_children"
+    end
 
   end
 

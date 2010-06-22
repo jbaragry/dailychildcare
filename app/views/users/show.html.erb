@@ -4,7 +4,28 @@
       <h2>
         <%= h @user.name %>
       </h2>
-           <% unless @offspring.empty? %>
+      <% if @user.admin? %>
+        <div id ="children-present">
+          <h3>Status</h3>
+          <table>
+            <tr>
+              <th> Dept Name </th> <th>Total Children</th><th>Present Today</th>
+              <% @departments.each do |d| %>
+              <% dept_children = Child.find_all_by_department_id(d) %>
+              <% checkedin = dept_children.select {|c| c.checkedin?} %>
+              <tr>                
+                <td><%= d.name %></td>
+                <td><%= dept_children.count %></td>
+                <td><%= checkedin.count %></td>
+              </tr>
+            <% end %>
+            </tr>
+
+
+          </table>
+        </div>
+      <% end %>
+      <% unless @offspring.empty? %>
         <ul class="users">
           <%= render @offspring %>
         </ul>

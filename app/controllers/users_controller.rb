@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @title = @user.name
     @offspring = @user.following
 #    render 'show_follow'
+
+    @departments = Department.all
   end
 
   def index
@@ -60,6 +62,10 @@ class UsersController < ApplicationController
 
 
   private
+
+  def children_status
+
+  end
 
   def correct_user
     @user = User.find(params[:id])

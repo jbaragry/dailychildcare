@@ -3,22 +3,22 @@
   <%= image_tag(@department.img_uri, :alt => @department.name) %>
 </h2>
 
-<% unless @children.empty?
-%>
+<% unless @children.empty? %>
 
-<h2><%= @children.count %> Children</h2>
- 
-<table>
-  <tr>
-  <% @children.each_with_index do |c, i| %>
-  <td>  <div id="<%= dom_id(c) %>">
-    <%= render :partial => "dept_child", :locals => {:child => c } %>
-  </div> </td>
-  <%= ((i + 1) % 4 == 0)? "</tr><tr>" : "" %>
-     <% end %>
+  <h2><%= @children.count %> Children</h2>
+  <div id="dept_children"><%= render :partial => "dept_children" %></div>
 
-  </tr>
-</table>
+  <table>
+    <tr>
+      <% @children.each_with_index do |c, i| %>
+        <td>  <div id="<%= dom_id(c) %>">
+            <%= render :partial => "dept_child", :locals => {:child => c } %>
+          </div> </td>
+        <%= ((i + 1) % 4 == 0)? "</tr><tr>" : "" %>
+      <% end %>
+
+    </tr>
+  </table>
 
 
-     <% end %>
+<% end %>
